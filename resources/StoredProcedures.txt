@@ -38,7 +38,7 @@ GO
 
 3. Delete file from table
 -------------------------------------------------------
-CREATE PROCEDURE[dbo].[sp_GetNamesList]
+CREATE PROCEDURE[dbo].[sp_DeleteFile]
 	@fileName nvarchar(50)
 AS
   DELETE FROM FileInfoTable
@@ -66,11 +66,14 @@ GO
 
 5. Read file content from table
 -------------------------------------------------------
+CREATE PROCEDURE[dbo].[sp_GetFileContent]
+	@fileName nvarchar(50)
+AS
+    SELECT filecontent FROM FileInfoTable
+    WHERE filename=@fileName
+GO
+
 -------------------------------------------------------
-
-
-
-
 
 
 
