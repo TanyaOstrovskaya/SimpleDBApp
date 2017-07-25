@@ -1,0 +1,85 @@
+
+1.1 Select all files information from table
+-------------------------------------------------------
+CREATE PROCEDURE[dbo].[sp_GetAllFiles]
+AS
+    SELECT * FROM FileInfoTable
+GO
+-------------------------------------------------------
+
+
+
+1.2 Select list of file names from table
+-------------------------------------------------------
+CREATE PROCEDURE[dbo].[sp_GetNamesList]
+AS
+    SELECT filename FROM FileInfoTable
+GO
+-------------------------------------------------------
+
+
+
+
+2. Add new file to table
+-------------------------------------------------------
+CREATE PROCEDURE [dbo].[sp_InsertFile]
+    @fileName nvarchar(50),
+    @fileContent nvarchar(MAX)
+AS
+    INSERT INTO FileInfoTable (filename, filecontent)
+    VALUES (@fileName, @fileContent)
+  
+    SELECT SCOPE_IDENTITY()
+GO
+-------------------------------------------------------
+
+
+
+
+3. Delete file from table
+-------------------------------------------------------
+CREATE PROCEDURE[dbo].[sp_GetNamesList]
+	@fileName nvarchar(50)
+AS
+  DELETE FROM FileInfoTable
+  WHERE filename=@fileName
+GO
+-------------------------------------------------------
+
+
+
+
+4. Update file in table
+-------------------------------------------------------
+CREATE PROCEDURE [dbo].[sp_UpdateFile]
+    @fileName nvarchar(50),
+    @fileContent nvarchar(MAX)
+AS
+    UPDATE FileInfoTable
+    SET filecontent=@fileContent
+    WHERE filename=@fileName
+GO
+-------------------------------------------------------
+
+
+
+
+5. Read file content from table
+-------------------------------------------------------
+-------------------------------------------------------
+
+
+
+
+
+
+
+
+
+/* 
+
+View code of stored procedure
+
+SELECT OBJECT_DEFINITION(OBJECT_ID(N'Procedure_Name',N'P'));
+
+*/
